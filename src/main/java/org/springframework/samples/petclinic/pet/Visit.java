@@ -24,10 +24,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Null;
 
+import org.h2.tools.Recover;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.recoveryroom.RecoveryRoom;
+
+import lombok.Getter;
 
 /**
  * Simple JavaBean domain object representing a visit.
@@ -58,6 +63,12 @@ public class Visit extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "pet_id")
 	private Pet pet;
+
+
+
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "recovery_room_id")
+	private RecoveryRoom recoveryRoom;
 
 	/**
 	 * Creates a new instance of Visit for the current date
@@ -116,11 +127,12 @@ public class Visit extends BaseEntity {
 
 	public RecoveryRoom getRecoveryRoom() {
 		// To be implemented
-		return null;
+		return this.recoveryRoom;
 	}
 
 	public void setRecoveryRoom(RecoveryRoom room) {
 		// To be implemented
+		this.recoveryRoom=room;
 	}
 
 }
