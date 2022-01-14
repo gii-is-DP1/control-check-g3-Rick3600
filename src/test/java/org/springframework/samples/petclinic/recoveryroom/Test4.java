@@ -37,7 +37,7 @@ public class Test4 {
         testInitialRoomsLinked();
     }
 
-        
+    @Test
     public void testInitialRoomsLinked(){
     
         Field roomType;
@@ -77,6 +77,7 @@ public class Test4 {
         assertTrue(hasRoomAssociated, "There is no visit associated with a room");
     }
 
+    
     void testAnnotations(){
         try{
             Field roomType=RecoveryRoom.class.getDeclaredField("roomType");
